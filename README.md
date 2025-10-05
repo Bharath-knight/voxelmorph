@@ -2,6 +2,18 @@
 
 **VoxelMorph** is a general purpose library for learning-based tools for alignment/registration, and more generally modelling with deformations.
 
+> ⚠️ **Warning**: VoxelMorph is under active development. We are in the process of finalizing the structure for PyTorch -- interfaces may change.
+
+## Install
+
+To use the VoxelMorph library, either clone this repository and install the requirements listed in `setup.py` or install directly with pip.
+
+```
+pip install voxelmorph
+```
+
+**For users who want to use the stable TensorFlow version**, use either `pip install voxelmorph`, or pull/clone from the `dev-tensorflow` branch.
+
 # Tutorial
 
 We have several VoxelMorph tutorials:
@@ -19,10 +31,12 @@ We have several VoxelMorph tutorials:
 
 # Instructions
 
-To use the VoxelMorph library, either clone this repository and install the requirements listed in `setup.py` or install directly with pip.
+To use the VoxelMorph library, clone this repository and install the requirements listed in `setup.py`.
+
+> **Note**: The `pip install voxelmorph` command is not yet supported. Please install directly from GitHub:
 
 ```
-pip install voxelmorph
+pip install git+https://github.com/voxelmorph/voxelmorph.git
 ```
 
 ## Pre-trained models

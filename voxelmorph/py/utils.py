@@ -1,16 +1,45 @@
-# internal python imports
+"""
+General-purpuse python utilities for VoxelMorph.
+"""
+
+# Standard library imports
 import os
 import csv
 import pathlib
-import functools
 
-# third party imports
+# Third-party Imports
 import numpy as np
 import scipy
 from skimage import measure
 
-# local/our imports
+# Custom imports
 import pystrum.pynd.ndutils as nd
+
+__all__ = [
+    'default_unet_features',
+    'read_file_list',
+    'read_pair_list',
+    'load_volfile',
+    'save_volfile',
+    'load_labels',
+    'load_pheno_csv',
+    'pad',
+    'resize',
+    'dice',
+    'affine_shift_to_matrix',
+    'extract_largest_vol',
+    'clean_seg',
+    'clean_seg_batch',
+    'filter_labels',
+    'dist_trf',
+    'signed_dist_trf',
+    'vol_to_sdt',
+    'vol_to_sdt_batch',
+    'get_surface_pts_per_label',
+    'edge_to_surface_pts',
+    'sdt_to_surface_pts',
+    'jacobian_determinant'
+]
 
 
 def default_unet_features():
@@ -19,14 +48,6 @@ def default_unet_features():
         [32, 32, 32, 32, 32, 16, 16]  # decoder
     ]
     return nb_features
-
-
-def get_backend():
-    """
-    Returns the currently used backend. Default is tensorflow unless the
-    VXM_BACKEND environment variable is set to 'pytorch'.
-    """
-    return 'pytorch' if os.environ.get('VXM_BACKEND') == 'pytorch' else 'tensorflow'
 
 
 def read_file_list(filename, prefix=None, suffix=None):
